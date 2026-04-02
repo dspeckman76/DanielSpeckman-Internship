@@ -32,6 +32,7 @@ const Countdown = ({ expiryDate }) => {                       // Countdown compo
   return <div className="de_countdown">{timeLeft}</div>;      // Otherwise render the countdown string inside the expected className
 };
 
+// Create API back-end Data
 const NewItems = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
