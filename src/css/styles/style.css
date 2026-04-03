@@ -16650,8 +16650,11 @@ img {
   }
 }
 
-/* ── Skeleton Loading (shared: HotCollections + NewItems) ──────────── */
+/* ══════════════════════════════════════════════════════════════════════
+   SKELETON LOADING STYLES
+   ══════════════════════════════════════════════════════════════════════ */
 
+/* ── Base Skeleton ───────────────────────────────────────────────────── */
 .skeleton-box {
   display: block;
   width: 100%;
@@ -16661,37 +16664,7 @@ img {
   overflow: hidden;
 }
 
-/* image placeholder */
-.nft_wrap .skeleton-box {
-  height: 200px;
-}
-
-.nft_wrap img,
-.nft_wrap .skeleton-box {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* profile picture — HotCollections uses 40px, NewItems uses 50px */
-.nft_coll_pp .skeleton-box {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.nft__item .nft_coll_pp .skeleton-box {
-  width: 50px;
-  height: 50px;
-}
-
-/* text lines */
-.nft_coll_info .skeleton-box {
-  height: 12px;
-  margin-bottom: 8px;
-}
-
-/* shimmer sweep */
+/* Shimmer Animation */
 .skeleton-box::after {
   position: absolute;
   top: 0;
@@ -16723,8 +16696,41 @@ img {
   }
 }
 
-/* ── Misc shared ───────────────────────────────────────────────────── */
+/* ── NFT Collections (HotCollections + NewItems) ───────────────────── */
 
+/* Image placeholder */
+.nft_wrap .skeleton-box {
+  height: 200px;
+  width: 100%;
+}
+
+.nft_wrap img,
+.nft_wrap .skeleton-box {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Profile picture - default 40px */
+.nft_coll_pp .skeleton-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Profile picture - NewItems 50px */
+.nft__item .nft_coll_pp .skeleton-box {
+  width: 50px;
+  height: 50px;
+}
+
+/* Text lines */
+.nft_coll_info .skeleton-box {
+  height: 12px;
+  margin-bottom: 8px;
+}
+
+/* NFT Image container */
 .nft-image {
   height: 100%;
   width: 100%;
@@ -16732,6 +16738,30 @@ img {
 
 .nft-image .skeleton-box {
   height: 100%;
+}
+
+/* ── Top Sellers ──────────────────────────────────────────────────── */
+
+/* Avatar */
+.skeleton-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* Name */
+.skeleton-name {
+  width: 120px;
+  height: 16px;
+  margin-bottom: 6px;
+  border-radius: 3px;
+}
+
+/* Price */
+.skeleton-price {
+  width: 80px;
+  height: 14px;
+  border-radius: 3px;
 }
 
 #filter-items {
