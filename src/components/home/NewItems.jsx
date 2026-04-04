@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
+=======
+>>>>>>> ExploreItems
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import axios from "axios";
+<<<<<<< HEAD
 
 const Countdown = ({ expiryDate }) => {                       // Countdown component receives expiryDate (Unix ms timestamp) as a prop
   const calcTimeLeft = () => {                                // Inner helper function to calculate how much time is left
@@ -33,6 +37,23 @@ const Countdown = ({ expiryDate }) => {                       // Countdown compo
 };
 
 // Create API back-end Data
+=======
+import NftCard, { NftCardSkeleton } from "../NftCard";
+
+const carouselOptions = {
+  loop: true,
+  margin: 10,
+  nav: true,
+  dots: false,
+  responsive: {
+    0:   { items: 1 },
+    576: { items: 2 },
+    768: { items: 3 },
+    992: { items: 4 },
+  },
+};
+
+>>>>>>> ExploreItems
 const NewItems = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -44,15 +65,22 @@ const NewItems = () => {
           "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems"
         );
         setItems(response.data);
+<<<<<<< HEAD
         setLoading(false);
       } catch (error) {
         console.error("Error fetching new items:", error);
+=======
+      } catch (error) {
+        console.error("Error fetching new items:", error);
+      } finally {
+>>>>>>> ExploreItems
         setLoading(false);
       }
     };
     fetchItems();
   }, []);
 
+<<<<<<< HEAD
   const options = {
     loop: true,
     margin: 10,
@@ -66,6 +94,8 @@ const NewItems = () => {
     },
   };
 
+=======
+>>>>>>> ExploreItems
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
@@ -76,6 +106,7 @@ const NewItems = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
+<<<<<<< HEAD
           <div className="col-lg-12">
             {loading ? (
               // Loading Skeleton
@@ -94,10 +125,21 @@ const NewItems = () => {
                         <div className="skeleton-box"></div>
                       </div>
                     </div>
+=======
+
+          <div className="col-lg-12">
+            {loading ? (
+              // ── Skeleton carousel ──────────────────────────────────────────
+              <OwlCarousel className="owl-theme" {...carouselOptions} key="skeleton">
+                {new Array(8).fill(0).map((_, index) => (
+                  <div className="item" key={index}>
+                    <NftCardSkeleton />
+>>>>>>> ExploreItems
                   </div>
                 ))}
               </OwlCarousel>
             ) : (
+<<<<<<< HEAD
               // Actual Data
               <OwlCarousel className="owl-theme" {...options} key="items">
                 {items.map((item) => (
@@ -157,6 +199,22 @@ const NewItems = () => {
                         </div>
                       </div>
                     </div>
+=======
+              // ── Live data carousel ─────────────────────────────────────────
+              <OwlCarousel className="owl-theme" {...carouselOptions} key="items">
+                {items.map((item) => (
+                  <div className="item" key={item.id}>
+                    <NftCard
+                      nftId={item.nftId}
+                      nftImage={item.nftImage}
+                      title={item.title}
+                      price={item.price}
+                      likes={item.likes}
+                      authorId={item.authorId}
+                      authorImage={item.authorImage}
+                      expiryDate={item.expiryDate}
+                    />
+>>>>>>> ExploreItems
                   </div>
                 ))}
               </OwlCarousel>
