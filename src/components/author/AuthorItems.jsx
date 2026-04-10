@@ -3,29 +3,16 @@ import axios from "axios";
 import NftCard, { NftCardSkeleton } from "../NftCard";
 
 const AuthorItems = ({ authorId }) => {
-  const [nfts, setNfts] = useState([]);
-  const [authorImage, setAuthorImage] = useState("");
+  const [author, setAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!authorId) return;
-
-    const fetchAuthorNfts = async () => {
-      setLoading(true);
-      try {
-        const { data } = await axios.get(
-          `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`
-        );
-        setAuthorImage(data.authorImage);
-        setNfts(data.nftCollection ?? []);
-      } catch (error) {
-        console.error("Failed to fetch author NFTs:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchAuthorNfts();
+    axios
+      .get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`)
+      .then(({ data }) => setAuthor(data))
+      .catch((error) => console.error("Failed to fetch author NFTs:", error))
+      .finally(() => setLoading(false));
   }, [authorId]);
 
   return (
@@ -38,17 +25,12 @@ const AuthorItems = ({ authorId }) => {
                   <NftCardSkeleton />
                 </div>
               ))
-            : nfts.map((nft) => (
+            : author?.nftCollection.map((nft) => (
                 <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={nft.nftId}>
                   <NftCard
-                    nftId={nft.nftId}
-                    nftImage={nft.nftImage}
-                    title={nft.title}
-                    price={nft.price}
-                    likes={nft.likes}
+                    {...nft}
                     authorId={authorId}
-                    authorImage={authorImage}
-                    expiryDate={nft.expiryDate}
+                    authorImage={author?.authorImage}
                   />
                 </div>
               ))}
