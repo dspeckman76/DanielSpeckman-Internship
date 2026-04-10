@@ -19,18 +19,18 @@ export const NftCardSkeleton = () => (
 );
 
 // ─── NftCard ───────────────────────────────────────────────────────────────────
-/**
- * Reusable NFT card component.
+
+/** Reusable NFT card component.
  *
  * Props:
- *  - nftId        {string|number}  – used for the item-details link
- *  - nftImage     {string}         – NFT preview image URL
- *  - title        {string}         – NFT title
- *  - price        {number|string}  – price in ETH
- *  - likes        {number}         – like count
- *  - authorId     {string|number}  – used for the author link
- *  - authorImage  {string}         – author avatar URL
- *  - expiryDate   {number}         – optional Unix ms timestamp for countdown
+ *  - nftId        {string|number}
+ *  - nftImage     {string}
+ *  - title        {string}
+ *  - price        {number|string}
+ *  - likes        {number}
+ *  - authorId     {string|number}
+ *  - authorImage  {string}
+ *  - expiryDate   {number}        
  */
 const NftCard = ({
   nftId,
