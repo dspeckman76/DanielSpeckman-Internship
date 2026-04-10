@@ -1,14 +1,5 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-/**
- * Countdown component
- *
- * Props:
- *  - expiryDate {number} – Unix ms timestamp marking when the countdown ends
- *
- * Renders a "HHh MMm SSs" countdown inside `.de_countdown`.
- * Returns null (renders nothing) once the timer expires.
- */
 const Countdown = ({ expiryDate }) => {
   const calcTimeLeft = () => {
     const diff = expiryDate - Date.now();

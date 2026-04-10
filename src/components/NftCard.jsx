@@ -18,6 +18,8 @@ export const NftCardSkeleton = () => (
   </div>
 );
 
+// ─── NftCard ───────────────────────────────────────────────────────────────────
+
 /** Reusable NFT card component.
  *
  * Props:
