@@ -22,6 +22,7 @@ const HotCollections = () => {
         setLoading(false);
       }
     };
+
     fetchCollections();
   }, []);
 
@@ -41,7 +42,7 @@ const HotCollections = () => {
   return (
     <section id="section-collections" className="no-bottom">
       <div className="container">
-        <div className="row">
+        <div className="row" data-aos="fade-in">  {/* Entire row fades in as one unit */}
           <div className="col-lg-12">
             <div className="text-center">
               <h2>Hot Collections</h2>
@@ -50,7 +51,6 @@ const HotCollections = () => {
           </div>
           <div className="col-lg-12">
             {loading ? (
-              // Loading Skeleton
               <OwlCarousel className="owl-theme" {...options} key="skeleton">
                 {new Array(6).fill(0).map((_, index) => (
                   <div className="item" key={index}>
@@ -71,7 +71,6 @@ const HotCollections = () => {
                 ))}
               </OwlCarousel>
             ) : (
-              // Actual Data
               <OwlCarousel className="owl-theme" {...options} key="collections">
                 {collections.map((collection) => (
                   <div className="item" key={collection.id}>
